@@ -1,5 +1,6 @@
 var fs = require('fs');
 var byline = require('byline');
+var _ = require('lodash');
 var dictionnary = require('./dictionnary.json');
 
 var arguments = process.argv;
@@ -18,7 +19,14 @@ function readFile() {
 
   readStream.on('data', function (line) {
 
-    // TODO: use dictionnary
+    line = _.map(line, function(letter) {
+
+      return dictionnary[letter.toUpperCase()];
+
+    });
+
+    console.log(line.join(' '));
+
   });
 }
 
