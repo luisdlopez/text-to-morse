@@ -26,7 +26,7 @@ vous devez écrire un fichier mp3 ou wav qui doit correspondre au message transm
 Pour un exemple du résultat, utilisez ce site: http://morsecode.scphillips.com/translator.html. Vous pouvez faire jouer le résultat en Morse et ajuster la vitesse.
 Il faut bien entendre chaque son pour que votre rendu soit accepté. Un message en Morse trop rapide au point où personne ne comprendra ce qui est dit sera refusé.
 
-Spécifications:
+##Spécifications:
 - utilisez cet alphabet: http://morsecode.scphillips.com/morse2.html. N'utilisez que les lettres (sans accents), les chiffres et les ponctuations.
 - la cadence: 
     - Votre unité de base est le ( . )
