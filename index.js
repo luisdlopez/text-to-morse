@@ -19,13 +19,13 @@ function readFile() {
 
   readStream.on('data', function (line) {
 
-    line = _.map(line, function(letter) {
+    line = (_.map(line, function(letter) {
 
       return dictionnary[letter.toUpperCase()];
 
-    });
+    })).join(' ');
 
-    console.log(line.join(' '));
+    console.log(line);
 
   });
 }
