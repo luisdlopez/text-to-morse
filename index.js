@@ -1,7 +1,8 @@
 var fs = require('fs');
 var byline = require('byline');
 var _ = require('lodash');
-var dictionnary = require('./dictionnary.json');
+var textCodes = require('./dictionnary').getTextCodes();
+var audioCodes = require('./dictionnary').getAudioCodes();
 
 var tone = require("tonegenerator");
 var header = require("waveheader");
@@ -16,13 +17,6 @@ if (!filename) {
 
 }
 
-var tones = {
-  ".": tone(300, 0.5),
-  "-": tone(300, 1.5),
-  "/": tone(1, 2.5),
-  " ": tone(1, 1.5),
-};
-
 function readFile() {
 
   var startTime = new Date();
@@ -31,21 +25,19 @@ function readFile() {
 
   readStream.on('data', function (line) {
 
+    var sound = [];
+
     line = (_.map(line, function(letter) {
 
-      return dictionnary[letter.toUpperCase()];
+      sound.push(audioCodes[letter.toUpperCase()]);
+      return textCodes[letter.toUpperCase()];
 
     })).join(' ');
 
     console.log(line);
 
-    var sound = [];
-
-    _.forEach(line, function(letter) {
-
-      sound = sound.concat(tones[letter]);
-      sound = sound.concat(tone(1, 0.01));
-    });
+    sound.join(tone(1, 0.01));
+    sound = _.flatten(sound, true);
 
     // write to file (note conversion to buffer!)
     var writer = new fs.createWriteStream("morse.wav");
