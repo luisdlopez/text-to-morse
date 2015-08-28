@@ -39,7 +39,7 @@ function readFile() {
 
     // write to file (note conversion to buffer!)
     var writer = new fs.createWriteStream("morse.wav");
-    writer.write(header( ((44100) / 4) * (line.length * 2.5) )); // 44100 Hz * xx seconds
+    writer.write(header( ((44100) / 8) * (line.length * 4) )); // 44100 Hz * xx seconds
     writer.write(new Buffer(sound));
     writer.end();
 
