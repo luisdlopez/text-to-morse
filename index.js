@@ -30,7 +30,6 @@ function readFile() {
 
     line = (_.map(line, function(letter) {
 
-      // console.log(letter.toUpperCase());
       sound.push(audioCodes[letter.toUpperCase()]);
       return textCodes[letter.toUpperCase()];
 
@@ -38,7 +37,6 @@ function readFile() {
 
     console.log(line);
 
-    // sound.join(tone(((44100) / 8), (base * 3))); // space between letters
     sound = _.flatten(sound, true);
 
     // write to file (note conversion to buffer!)
