@@ -4,8 +4,6 @@ var _ = require('lodash');
 var textCodes = require('./dictionnary').getTextCodes();
 var audioCodes = require('./dictionnary').getAudioCodes();
 var base = require('./dictionnary').getBase();
-
-var tone = require("./tonegenerator");
 var header = require("waveheader");
 
 var arguments = process.argv;
