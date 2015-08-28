@@ -1,4 +1,4 @@
-var tone = require("tonegenerator");
+var tone = require("./tonegenerator");
 
 var textCodes = {
     "A": ".-",
