@@ -25,6 +25,8 @@ var tones = {
 
 function readFile() {
 
+  var startTime = new Date();
+
   var readStream = byline(fs.createReadStream(filename, { encoding: 'utf8' }));
 
   readStream.on('data', function (line) {
@@ -50,6 +52,10 @@ function readFile() {
     writer.write(header( 44100 * (line.length * 2.5) )); // 44100 Hz * 10 seconds
     writer.write(new Buffer(sound));
     writer.end();
+
+    var time = (new Date()) - startTime;
+    console.log('Total time: %dms', time);
+
   });
 }
 
