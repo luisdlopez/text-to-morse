@@ -3,8 +3,9 @@ var byline = require('byline');
 var _ = require('lodash');
 var textCodes = require('./dictionnary').getTextCodes();
 var audioCodes = require('./dictionnary').getAudioCodes();
+var base = require('./dictionnary').getBase();
 
-var tone = require("tonegenerator");
+var tone = require("./tonegenerator");
 var header = require("waveheader");
 
 var arguments = process.argv;
@@ -29,6 +30,7 @@ function readFile() {
 
     line = (_.map(line, function(letter) {
 
+      // console.log(letter.toUpperCase());
       sound.push(audioCodes[letter.toUpperCase()]);
       return textCodes[letter.toUpperCase()];
 
@@ -36,12 +38,12 @@ function readFile() {
 
     console.log(line);
 
-    sound.join(tone(1, 0.01));
+    // sound.join(tone(((44100) / 8), (base * 3))); // space between letters
     sound = _.flatten(sound, true);
 
     // write to file (note conversion to buffer!)
     var writer = new fs.createWriteStream("morse.wav");
-    writer.write(header( 44100 * (line.length * 2.5) )); // 44100 Hz * 10 seconds
+    writer.write(header( ((44100) / 4) * (line.length * 2.5) )); // 44100 Hz * xx seconds
     writer.write(new Buffer(sound));
     writer.end();
 

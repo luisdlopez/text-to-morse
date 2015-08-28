@@ -2,7 +2,6 @@
   "dependencies": {
     "byline": "^4.2.1",
     "lodash": "^3.10.1",
-    "tonegenerator": "0.0.2",
     "waveheader": "0.0.2"
   }
 }
