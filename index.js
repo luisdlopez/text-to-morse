@@ -35,8 +35,6 @@ function readFile() {
 
     })).join(' ');
 
-    console.log(line);
-
     sound = _.flatten(sound, true);
 
     // write to file (note conversion to buffer!)
@@ -46,6 +44,7 @@ function readFile() {
     writer.end();
 
     var time = (new Date()) - startTime;
+    console.log(line);
     console.log('Total time: %dms', time);
 
   });

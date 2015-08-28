@@ -56,9 +56,9 @@ var base = 0.75;
 var tones = {
     ".": tone(400, base), // base
     "-": tone(400, (base * 3)), // base * 3
-    "/": tone(((44100) / 8), (base * 5)), // base * 5
-    " ": tone(((44100) / 8), (base * 3)), // base * 3
-    "beep_end": tone(((44100) / 8), (base)), // base * 3
+    "/": tone(((44100) / 16), (base * 5)), // base * 5
+    " ": tone(((44100) / 16), (base * 3)), // base * 3
+    "beep_end": tone(((44100) / 16), (base)), // base * 3
 };
 
 var audioCodes = {
